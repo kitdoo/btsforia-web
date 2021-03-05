@@ -5,12 +5,12 @@
 //@font-family: "Source Sans Pro", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 @font-family: 'Source Sans Pro';
 
-@font-size-base: 14px;
-@font-size-small: 12px;
-@font-size-large: 14px;
+@font-size-base: 16px;
+@font-size-small: 14px;
+@font-size-large: 16px;
 
-@border-color-base: #D3D7E5;
-@border-color-split: #D3D7E5;
+@border-color-base: #D8D3E5;
+@border-color-split: #D5D3E5;
 @border-radius-base: 5px;
 @border-radius-small: 3px;
 
@@ -63,8 +63,27 @@ div#__nuxt, div#__layout {
 }
 
 .ivu-btn-primary {
-  text-transform: uppercase;
   font-weight: bold;
+}
+
+.ivu-input {
+  border: 2px solid @color-gray-light;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.ivu-form-item-error .ivu-input{
+  border: 2px solid @error-color;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.ivu-input[disabled] {
+  color: @text-disabled;
+  background-color: @input-disabled-bg;
 }
 
 .ivu-input-number {
@@ -77,7 +96,19 @@ div#__nuxt, div#__layout {
 }
 
 .ivu-btn {
-  font-size: 13px;
+  height: 40px;
+  min-width: 110px;
+  font-size: 14px;
+  border-radius: 30px;
+}
+
+.ivu-btn-primary:hover {
+  background-color: @color-purple-fade;
+}
+
+.ivu-btn-primary[disabled] {
+  background-color: @disabled-color;
+  color: white;
 }
 
 .ivu-notice {

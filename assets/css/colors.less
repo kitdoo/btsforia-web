@@ -1,31 +1,35 @@
-@color-black: #242931;
-@color-green: #44B31A;
-@color-red: #AF210F;
-@color-blue: #141F45;
-@color-violet: #8E38A8;
-@color-purple: #7663E3;
-@color-gray: #5F6D81;
-@color-yellow: #D7A114;
+@color-black: #2B2B2B;
+@color-green: #6AD65C;
+@color-red: #A80808;
+@color-blue: #449BF2;
+@color-violet: #550BB5;
+@color-purple: #8621D9;
+@color-purple-fade: #680BB5;
+@color-gray: #8691B1;
+@color-gray-light: #E4E8F3;
+@color-yellow: #E6DE12;
 @color-cyan: #1985E2;
 @color-fade-cyan: rgba(51, 133, 204, 0.75);
 
 @black: @color-black;
-@primary-color: @color-green;
+@primary-color: @color-purple;
 @error-color: @color-red;
 @warning-color: @color-yellow;
 @info-color: @color-cyan;
-@success-color: #4DCB1D;
+@success-color: @color-green;
+@disabled-color: #254bc933;
 
-@link-color: #34608E;
-//@link-color: @color-green;
+@link-color: @color-purple-fade;
 @title-color: @color-black;
 @text-color: #282D39;
 @text-color-secondary: fade(@color-black, 70%);
+@text-disabled: #33333380;
 @heading-color: @color-black;
 
 // Input
-@input-placeholder-color: fade(@color-gray, 40%);
-@input-color: @text-color;
+@input-placeholder-color: @color-gray;
+@input-color: @color-black;
+@input-disabled-bg: #F3F5FA;
 
 // Layout
 @layout-sider-background: @color-black;
@@ -33,22 +37,9 @@
 @layout-footer-padding: 15px 20px;
 @layout-footer-background: clear;
 
-@menu-dark-active-bg: @color-green;
+@menu-dark-active-bg: @color-purple;
 @menu-dark-title: @color-black;
 @menu-dark-group-title-color: #FFFFFF;
-
-@table-td-stripe-bg: rgba(38, 91, 38, 0.02);
-@table-td-hover-bg: rgba(37, 74, 37, 0.1);
-@table-thead-bg: @table-td-stripe-bg;
-
-// Color palettes
-@blue-6: @color-blue;
-@purple-6: @color-violet;
-@cyan-6: @color-cyan;
-@green-6: @color-green;
-@red-6: @color-red;
-@orange-6: @color-yellow;
-@magenta-6: @color-purple;
 
 // Rate
 @rate-star-color: @color-yellow;
