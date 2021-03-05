@@ -1,0 +1,171 @@
+@import './helpers';
+@import './colors';
+@import '~view-design/src/styles/index';
+
+//@font-family: "Source Sans Pro", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+@font-family: 'Source Sans Pro';
+
+@font-size-base: 14px;
+@font-size-small: 12px;
+@font-size-large: 14px;
+
+@border-color-base: #D3D7E5;
+@border-color-split: #D3D7E5;
+@border-radius-base: 5px;
+@border-radius-small: 3px;
+
+body, html {
+  height: 100%;
+  padding: 0;
+}
+
+body {
+  font-family: @font-family !important;
+}
+
+h1, h2, h3, h4 {
+  color: @title-color;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+h2, h3, h4 {
+  margin-bottom: 10px;
+}
+
+input {
+  filter: none;
+}
+
+div#__nuxt, div#__layout {
+  height: 100%;
+}
+
+.ivu-select-not-found {
+  li {
+    list-style: none;
+  }
+}
+
+.ivu-spin-dot {
+  background-color: @color-green;
+}
+
+.ivu-form-item-error-tip {
+  font-size: 11px;
+}
+
+.ivu-btn-primary {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.ivu-input-number {
+  width: 100%;
+}
+
+.ivu-divider-inner-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.ivu-btn {
+  font-size: 13px;
+}
+
+.ivu-notice {
+  &-desc {
+    text-align: left !important;
+  }
+
+  &-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+}
+
+.ivu-modal-header-inner {
+  font-weight: 700;
+}
+
+.ivu-checkbox-wrapper + span, .ivu-checkbox + span {
+  margin-left: 8px !important;
+
+  &:last-child {
+    margin-left: 0;
+  }
+}
+
+.ivu-tabs {
+  overflow: visible;
+}
+
+.ivu-alert {
+  &-desc {
+    text-align: left;
+  }
+
+  &-with-desc&-with-icon {
+    padding: 10px 10px 10px 55px;
+  }
+}
+
+.ivu-page {
+  &-options {
+    &-sizer {
+      margin-right: 0;
+    }
+  }
+}
+
+.ivu-table .deleted-row td {
+  background-color: fade(@color-red, 10%) !important;
+}
+
+.ivu-table .new-row td {
+  font-weight: bold;
+}
+
+.ivu-table-cell {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+div, footer, h1, h2,
+h3, h4, h5, h6, header, li, p, section, textarea, ul {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.ivu-icon-ios-star {
+  &:before {
+    color: @rate-star-color !important;
+  }
+}
+
+@media @tablet {
+  h3 {
+    font-size: 1.0rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+@media @desktop {
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+}

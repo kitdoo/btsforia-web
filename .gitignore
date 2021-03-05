@@ -1,0 +1,9 @@
+.idea/workspace.xml
+.DS_Store
+.nuxt
+dist
+node_modules
+/static/sitemap.xml.gz
+/static/sitemap.xml
+/package-lock.json
+/.vscode/settings.json

@@ -1,0 +1,140 @@
+@import './colors';
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-end {
+  justify-content: flex-end !important;
+}
+
+
+.justify-space-between {
+  justify-content: space-between !important;
+}
+
+.justify-start {
+  justify-content: flex-start !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.justify-space-between {
+  justify-content: space-between !important;
+}
+
+.items-align-end {
+  align-items: flex-end !important;
+}
+
+.items-align-start {
+  align-items: flex-start !important;
+}
+
+.items-align-center {
+  align-items: center !important;
+}
+
+.self-align-center {
+  align-self: center !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.no-vertical-margin {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.page-title {
+  color: @color-black;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.page-sub-title {
+  color: @text-color-secondary;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.action-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.notice {
+  font-size: 12px !important;
+  line-height: 14px !important;
+  color: @color-gray !important;
+}
+
+@margins: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, -5, -10, -15, -20, -25, -30, -35, -40, -45, -50;
+.generateMargins(@list, @i: 1) when (@i <= length(@list)) {
+  @margin: extract(@list, @i);
+
+  .mr@{margin} {
+    @m: @{margin}px;
+    margin-right: @m !important;
+  }
+  .ml@{margin} {
+    @m: @{margin}px;
+    margin-left: @m !important;
+  }
+  .mt@{margin} {
+    @m: @{margin}px;
+    margin-top: @m !important;
+  }
+  .mb@{margin} {
+    @m: @{margin}px;
+    margin-bottom: @m !important;
+  }
+  .mt@{margin} {
+    @m: @{margin}px;
+    margin-top: @m !important;
+  }
+
+  .pr@{margin} {
+    @m: @{margin}px;
+    padding-right: @m !important;
+  }
+  .pl@{margin} {
+    @m: @{margin}px;
+    padding-left: @m !important;
+  }
+  .pt@{margin} {
+    @m: @{margin}px;
+    padding-top: @m !important;
+  }
+  .pb@{margin} {
+    @m: @{margin}px;
+    padding-bottom: @m !important;
+  }
+
+  .generateMargins(@list, @i + 1);
+}
+
+.generateMargins(@margins);
+
+@import '~view-design/src/styles/custom.less';
+
+@xs-and-up: ~"only screen";
+@xs-only: ~"only screen and (max-width: @{screen-xs-max})";
+@sm-and-up: ~"only screen and (min-width: @{screen-sm-min})";
+@sm-only: ~"only screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+@md-and-up: ~"only screen and (min-width: @{screen-md-min})";
+@md-only: ~"only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+@lg-and-up: ~"only screen and (min-width: @{screen-lg-min})";
+@lg-only: @lg-and-up;
+@xs-down: ~"only screen and (max-width: 374px and min-width: 319px)";
+@Iphone5: ~"only screen and (device-height: 568px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)";
+
+@print: ~"print";
+@mobile: @xs-only;
+@tablet: @sm-and-up;
+@desktop: @lg-and-up;
+

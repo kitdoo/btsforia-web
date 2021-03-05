@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {}
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "vue"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-console": [
+      "error"
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
+}
