@@ -29,6 +29,8 @@ export default {
   plugins: [
     {src: '~/plugins/iview', ssr: false},
     {src: '~/plugins/font-awesome', ssr: false},
+    {src: '~/plugins/directives', ssr: false},
+    {src: '~/plugins/filters', ssr: false},
   ],
 
   build: {
