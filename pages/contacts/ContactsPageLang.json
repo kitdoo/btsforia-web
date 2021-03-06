@@ -1,0 +1,34 @@
+{
+  "ru": {
+    "contacts-page": {
+      "title-contacts": "Контакты",
+      "title-requisite": "Pеквизиты",
+      "description-contacts": "Контакты фанбазы BTSforia. По вопросам сотрудничества обращаться к организатору",
+      "description-requisite": "Сбор продолжается.",
+      "requisite": {
+        "card-number": "Номер карты: 4274320059382542",
+        "card-expiry-date": "Срок действия: 31.12.2023",
+        "warning-title": "ДРУГИХ КАРТ У НАС НЕТ!",
+        "warning-text": "Очень много мошенников! Не дайте себя обмануть!"
+      },
+      "fanbase": {
+        "title": "Фанбаза",
+        "links": {
+          "telegram": "@BTSforia",
+          "instagram": "@BTSforia_OT7",
+          "vk": "@BTSforia",
+          "twitter": "@BTSforia_OT7"
+        }
+      },
+      "organizer": {
+        "title": "Организатор",
+        "links": {
+          "tiktok": "@rubiforia",
+          "instagram": "@rubiforia",
+          "vk": "@soulmatetae",
+          "twitter": "@bitchmytime"
+        }
+      }
+    }
+  }
+}

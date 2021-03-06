@@ -20,13 +20,13 @@
                 <span>{{ $t('layout.menu.events.link.text') }}</span>
               </template>
               <MenuGroup>
-                <MenuItem name="index">
+                <MenuItem name="congratulations">
                   <font-awesome-icon class="icon-menu" far icon="birthday-cake"/>
                   <span>{{ $t('layout.menu.congratulations-events.link.text') }}</span>
                 </MenuItem>
               </MenuGroup>
               <MenuGroup>
-                <MenuItem name="index">
+                <MenuItem name="charity">
                   <font-awesome-icon class="icon-menu" far icon="hand-holding-heart"/>
                   <span>{{ $t('layout.menu.charity-events.link.text') }}</span>
                 </MenuItem>
@@ -47,9 +47,9 @@
           </div>
         </Menu>
 
-        <!--        <div class="user-avatar-wrap" v-if="!$device.isMobile">-->
-        <!--          <UserAvatar/>-->
-        <!--        </div>-->
+        <div class="user-avatar-wrap" v-if="!$device.isMobile">
+          <UserAvatar/>
+        </div>
 
         <Icon :class="{'d-none': !$device.isMobile}"
               class="menu-icon"
@@ -71,13 +71,13 @@
                 <span>{{ $t('layout.menu.events.link.text') }}</span>
               </template>
               <MenuGroup>
-                <MenuItem name="index">
+                <MenuItem name="congratulations">
                   <font-awesome-icon class="icon-menu" far icon="birthday-cake"/>
                   <span>{{ $t('layout.menu.congratulations-events.link.text') }}</span>
                 </MenuItem>
               </MenuGroup>
               <MenuGroup>
-                <MenuItem name="index">
+                <MenuItem name="charity">
                   <font-awesome-icon class="icon-menu" far icon="hand-holding-heart"/>
                   <span>{{ $t('layout.menu.charity-events.link.text') }}</span>
                 </MenuItem>
@@ -136,6 +136,7 @@ export default {
   methods: {
     $_onSelect: function (name) {
       this.$router.push(this.localePath(name));
+      this.$_hideMenu();
     },
 
     $_hideMenu() {
@@ -167,7 +168,7 @@ export default {
     height: auto;
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    padding: 5px 30px;
     flex-wrap: wrap;
     background-color: @color-purple;
 
@@ -304,7 +305,7 @@ export default {
     .show-menu {
       height: auto;
       overflow: auto;
-      transition: all 0.3s ease-out 0.3s;
+      transition: all 0.5s ease-out 0.5s;
     }
 
     .hide-menu {
@@ -320,8 +321,12 @@ export default {
   }
 
   .layout-content {
-    padding: 50px;
+    padding: 35px 70px;
     flex: 1 0 auto;
+
+    @media @mobile {
+      padding: 15px 20px;
+    }
   }
 
   .layout-footer-center {
