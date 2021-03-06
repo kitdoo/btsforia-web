@@ -14,9 +14,9 @@ export default {
   head: {
     title: process.env.npm_package_name || '',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
   },
 
@@ -61,13 +61,21 @@ export default {
   },
 
   modules: [
+    '@nuxtjs/moment',
     'nuxt-polyfill',
     '@nuxtjs/device',
+    'nuxt-i18n',
     'nuxt-webfontloader',
   ],
 
   generate: {
     fallback: true,
+  },
+
+  moment: {
+    locales: ['ru'],
+    defaultLocale: 'ru',
+    plugin: true
   },
 
   polyfill: {
@@ -83,5 +91,27 @@ export default {
         install: (smoothscroll) => smoothscroll.polyfill()
       }
     ]
+  },
+  i18n: {
+    vueI18nLoader: true,
+    locales: [
+      {
+        code: 'ru',
+        iso: 'ru-RU',
+        name: 'Русский',
+        file: 'ru-RU.js'
+      },
+    ],
+    langDir: 'lang/',
+    lazy: true,
+    defaultLocale: 'ru',
+    vueI18n: {
+      fallbackLocale: 'ru',
+      silentTranslationWarn: true,
+    },
+    // detectBrowserLanguage: {
+    //     useCookie: true,
+    //     alwaysRedirect: true
+    // },
   },
 }

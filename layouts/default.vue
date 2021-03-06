@@ -1,117 +1,135 @@
 <template>
-  <div class="layout--container">
-    <Layout style="min-height: 100%">
-      <Sider ref="leftSlider" hide-trigger width="240" class="slider" collapsible :collapsed-width="70"
-             v-model="isCollapsed">
-        <div class="logo-collapsed" v-if="isCollapsed">
-          <img src="~assets/images/logo.png" alt="logo">
-        </div>
+  <div class="layout">
+    <Layout>
+      <Header>
+        <img src="~assets/images/logo.png" alt="logo" class="logo">
 
-        <div class="logo" v-else>
-          <img src="~assets/images/logo.png" alt="logo">
-        </div>
-
-        <Menu theme="dark" width="auto" :accordion="true" :active-name="active"
-              @on-select="$_onSelect" :class="menuClasses">
-          <MenuItem name="index">
-            <i>
-              <font-awesome-icon far icon="home"/>
-            </i>
-            <span>Home</span>
-          </MenuItem>
+        <Menu mode="horizontal"
+              theme="dark"
+              @on-select="$_onSelect"
+              :class="{'d-none': $device.isMobile}"
+              :active-name="active">
+          <div class="layout-nav">
+            <MenuItem name="main">
+              <font-awesome-icon class="icon-menu" far icon="home"/>
+              <span>{{ $t('layout.menu.main.link.text') }}</span>
+            </MenuItem>
+            <Submenu name="events">
+              <template slot="title">
+                <font-awesome-icon class="icon-menu" far icon="calendar-week"/>
+                <span>{{ $t('layout.menu.events.link.text') }}</span>
+              </template>
+              <MenuGroup>
+                <MenuItem name="index">
+                  <font-awesome-icon class="icon-menu" far icon="birthday-cake"/>
+                  <span>{{ $t('layout.menu.congratulations-events.link.text') }}</span>
+                </MenuItem>
+              </MenuGroup>
+              <MenuGroup>
+                <MenuItem name="index">
+                  <font-awesome-icon class="icon-menu" far icon="hand-holding-heart"/>
+                  <span>{{ $t('layout.menu.charity-events.link.text') }}</span>
+                </MenuItem>
+              </MenuGroup>
+            </Submenu>
+            <MenuItem name="reports">
+              <font-awesome-icon class="icon-menu" far icon="file-alt"/>
+              <span>{{ $t('layout.menu.reports.link.text') }}</span>
+            </MenuItem>
+            <MenuItem name="documents">
+              <font-awesome-icon class="icon-menu" far icon="file"/>
+              <span>{{ $t('layout.menu.documents.link.text') }}</span>
+            </MenuItem>
+            <MenuItem name="contacts">
+              <font-awesome-icon class="icon-menu" far icon="address-book"/>
+              <span>{{ $t('layout.menu.contacts.link.text') }}</span>
+            </MenuItem>
+          </div>
         </Menu>
 
-      </Sider>
+        <!--        <div class="user-avatar-wrap" v-if="!$device.isMobile">-->
+        <!--          <UserAvatar/>-->
+        <!--        </div>-->
 
-      <Layout>
-        <Header :style="{padding: 0, position: 'fixed', width: '100%'}" class="header">
-          <div class="top-panel">
-            <Row type="flex" justify="space-between">
-              <Col :xs="12" :sm="16" :md="16" :lg="18">
-                <Row type="flex" justify="start">
-                  <Col class="mr25 d-flex items-align-center">
-                    <Icon @click.native="$_collapsedSlider" type="md-menu" size="25"
-                          :class="{'d-none': $device.isMobile}"/>
-                  </Col>
-                </Row>
-              </Col>
-              <Col :xs="12" :sm="8" :md="8" :lg="6" class="d-flex justify-end"
-                   style="position: fixed; right: 10px">
-              </Col>
-            </Row>
+        <Icon :class="{'d-none': !$device.isMobile}"
+              class="menu-icon"
+              size="25" type="md-menu"
+              @click.native="$_hideMenu"/>
+        <Menu class="mobile-menu" theme="dark"
+              v-if="$device.isMobile"
+              @on-select="$_onSelect"
+              :class="classMobileMenu"
+              :active-name="active">
+          <div class="layout-nav">
+            <MenuItem name="main">
+              <font-awesome-icon class="icon-menu" far icon="home"/>
+              <span>{{ $t('layout.menu.main.link.text') }}</span>
+            </MenuItem>
+            <Submenu name="events">
+              <template slot="title">
+                <font-awesome-icon class="icon-menu" far icon="calendar-week"/>
+                <span>{{ $t('layout.menu.events.link.text') }}</span>
+              </template>
+              <MenuGroup>
+                <MenuItem name="index">
+                  <font-awesome-icon class="icon-menu" far icon="birthday-cake"/>
+                  <span>{{ $t('layout.menu.congratulations-events.link.text') }}</span>
+                </MenuItem>
+              </MenuGroup>
+              <MenuGroup>
+                <MenuItem name="index">
+                  <font-awesome-icon class="icon-menu" far icon="hand-holding-heart"/>
+                  <span>{{ $t('layout.menu.charity-events.link.text') }}</span>
+                </MenuItem>
+              </MenuGroup>
+            </Submenu>
+            <MenuItem name="reports">
+              <font-awesome-icon class="icon-menu" far icon="file-alt"/>
+              <span>{{ $t('layout.menu.reports.link.text') }}</span>
+            </MenuItem>
+            <MenuItem name="documents">
+              <font-awesome-icon class="icon-menu" far icon="file"/>
+              <span>{{ $t('layout.menu.documents.link.text') }}</span>
+            </MenuItem>
+            <MenuItem name="contacts">
+              <font-awesome-icon class="icon-menu" far icon="address-book"/>
+              <span>{{ $t('layout.menu.contacts.link.text') }}</span>
+            </MenuItem>
           </div>
-        </Header>
+        </Menu>
 
-        <Content class="content" v-bind:style="bcolor">
-          <nuxt/>
-        </Content>
+      </Header>
+      <Content class="layout-content">
+        <nuxt></nuxt>
+      </Content>
+      <Footer class="layout-footer-center">
+        <div class="copywriter">{{ $t('layout.footer.owner') }} {{ $t('layout.footer.copywriter') }}</div>
+      </Footer>
 
-        <Footer :style="{padding: 0}" class="footer">
-          <div class="bottom-panel">
-            <Row type="flex" justify="space-between">
-              <Col span="12" class="d-flex items-align-center">
-                <!--                                <img src="~/assets/images/logo.png" alt="" style="height: 30px"/>-->
-              </Col>
-              <Col span="12" class="d-flex justify-end items-align-center">
-                <span style="font-size: 12px; color: #282D39">&copy; 2021 - {{ year }}, Kitdoo</span>
-              </Col>
-            </Row>
-          </div>
-        </Footer>
-      </Layout>
     </Layout>
   </div>
 </template>
 
 <script>
+import UserAvatar from "../components/avatar/TheUserAvatar";
+
 export default {
-  components: {},
+  components: {UserAvatar},
 
   data() {
     return {
-      hideNotifications: false,
-      mCollapsed: undefined,
-      bcolor: {
-        backgroundColor: '#fff'
-      }
+      collapseMenu: false,
+      classMobileMenu: ''
     };
   },
 
   computed: {
-    isCollapsed: {
-      set(v) {
-        this.mCollapsed = v;
-      },
-
-      get() {
-        return this.mCollapsed === undefined ? this.windowWidth <= 1440 : this.mCollapsed;
-      }
-    },
-
     active() {
       if (this.$route.name) {
         let p = this.$route.name.replace(/(___[aA-zZ]{2})$/, '').split('-');
         return p[0];
       }
       return null;
-    },
-
-    menuClasses() {
-      return [
-        'menu',
-        this.isCollapsed ? 'collapsed-menu' : '',
-      ];
-    },
-
-    logoClasses() {
-      return [
-        'logo',
-        this.isCollapsed ? 'logo-collapsed' : '',
-      ];
-    },
-
-    year() {
-      return new Date().getFullYear();
     }
   },
 
@@ -119,22 +137,15 @@ export default {
     $_onSelect: function (name) {
       this.$router.push(this.localePath(name));
     },
-    $_collapsedSlider() {
-      if (this.$device.isDesktopOrTablet) {
-        this.$refs.leftSlider.toggleCollapse();
+
+    $_hideMenu() {
+      if (this.collapseMenu === false) {
+        this.classMobileMenu = ' show-menu';
+      } else {
+        this.classMobileMenu = ' hide-menu';
       }
-    }
-  },
 
-  watch: {
-    $route: {
-      handler(to, from) {
-        this.bcolor.backgroundColor = to.path === '/' || to.path === '/reports'
-          ? 'transparent'
-          : '#fff';
-
-      },
-      immediate: true,
+      this.collapseMenu = !this.collapseMenu;
     }
   },
 };
@@ -143,139 +154,198 @@ export default {
 <style lang="less">
 @import '~assets/css/main';
 
-.layout--container {
-  height: 100%;
+.layout {
+  display: flex;
+  flex-direction: column;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  height: 100vh;
 
-  .ivu-layout-sider {
-    position: relative;
+  .ivu-layout-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    flex-wrap: wrap;
+    background-color: @color-purple;
 
-    .ivu-layout-sider-children {
-      width: inherit;
-      position: fixed;
+    @media @mobile, @md-and-down {
+      padding: 10px 20px;
+      justify-content: space-between;
     }
 
-    .logo {
-      margin-top: 20px;
-      text-align: center;
-      display: block;
-      margin-bottom: 20px;
-
-      img {
-        transition: width .2s ease .2s, height .2s ease .2s;
-        height: 65px;
-      }
+    .menu-icon {
+      color: white;
     }
 
-    .logo-collapsed {
-      margin-top: 20px;
-      text-align: center;
-      display: block;
-      margin-bottom: 20px;
+    .user-avatar-wrap {
+      margin-left: auto;
+    }
 
-      img {
-        transition: width .2s ease, height .2s ease;
-        width: 30px;
-      }
+    .ivu-menu-dark {
+      background-color: @color-purple;
+    }
+
+    .ivu-menu-horizontal {
+      display: flex;
+      align-items: center;
+      line-height: 50px;
+      height: 50px;
     }
 
     .ivu-menu {
-      &-item {
-        font-size: 16px;
-        margin-top: 10px;
-        display: flex;
-        padding: 20px 20px;
-        align-items: center;
+      .ivu-menu-item {
+        border-radius: 30px;
+        transition: background-color 0.3s ease-out 0.3s;
 
-        i {
-          margin-right: 0;
+        .ivu-menu-submenu {
+          transition: background-color 0.3s ease-out 0.3s;
+        }
+
+        &:hover {
+          border-radius: 30px;
+          background-color: @color-purple-fade;
+          color: white;
+          transition: background-color 0.07s ease-out 0.07s;
         }
       }
 
-      &-item-selected {
-        color: #FFFFFF !important;
+      .ivu-menu-submenu-active {
+        background-color: @color-gray-light;
+      }
+
+      .ivu-menu-item-group {
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+
+        .ivu-menu-item {
+          padding-bottom: 10px;
+          border-radius: unset;
+
+          .icon-menu {
+            path {
+              fill: @color-purple-fade;
+            }
+          }
+
+          &:hover {
+            background-color: @color-gray-light;
+            color: @color-black;
+            transition: background-color 0.07s ease-out 0.07s;
+          }
+        }
+
+        .ivu-menu-item-active {
+          background-color: white;
+          color: @color-black;
+        }
+      }
+
+      .icon-menu {
+        margin-right: 5px;
       }
     }
 
+    .mobile-menu {
+      display: block;
+      overflow: hidden;
+      height: 0;
+      width: 100% !important;
+      padding: 0;
 
-    .collapsed-menu {
-      span {
-        width: 0 !important;
-        transition: width .2s ease !important;
-        display: none;
+      .ivu-menu-item {
+        padding: 0 !important;
+        width: 100%;
+
+        &:hover {
+          background-color: transparent !important;
+        }
       }
 
-      i {
-        transform: translateX(5px) !important;
-        transition: font-size .2s ease .2s, transform .2s ease .2s !important;
-        vertical-align: middle !important;
-        font-size: 22px !important;
+      .ivu-menu-submenu {
+        width: 100%;
+
+        .ivu-menu-submenu-title {
+          padding: 0;
+        }
+
+        &:hover {
+          background-color: transparent !important;
+        }
+
+        .ivu-menu {
+          padding-left: 10px;
+        }
+
+        .icon-menu {
+          margin-right: 5px;
+        }
+
+        .ivu-menu-item-group {
+          .ivu-menu-item {
+            padding: 0 15px;
+            border-radius: unset;
+            color: white;
+
+            .icon-menu {
+              path {
+                fill: white;
+              }
+            }
+          }
+        }
       }
 
     }
 
-    .menu {
-      span {
-        display: inline-block;
-        overflow: hidden;
-        width: 160px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        vertical-align: bottom;
-        transition: width .2s ease .2s;
-        margin-left: 15px;
-      }
+    .show-menu {
+      height: auto;
+      overflow: auto;
+      transition: all 0.3s ease-out 0.3s;
+    }
 
-      i {
-        transform: translateX(0px);
-        transition: font-size .2s ease, transform .2s ease;
-        vertical-align: middle;
-        font-size: 16px;
-      }
+    .hide-menu {
+      height: 0;
+      overflow: hidden;
+      transition: all 0.5s ease-out 0.5s;
+    }
+
+    .logo {
+      height: 35px;
+      padding-right: 15px;
     }
   }
 
-  .ivu-layout {
-    &-header {
-      background: #fff;
-      box-shadow: 0 0 5px rgba(86, 96, 117, 0.15);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+  .layout-content {
+    padding: 50px;
+    flex: 1 0 auto;
+  }
 
-      .top-panel {
-        width: 100%;
-        flex-flow: row wrap;
-        padding: 0 15px;
-      }
+  .layout-footer-center {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    background-color: @color-gray-light;
+    font-size: 14px;
+    padding: 13px 35px;
+
+    @media @mobile {
+      justify-content: center;
     }
 
-    &-footer {
-      background: #fff;
-      box-shadow: 0 0 5px rgba(86, 96, 117, 0.15);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .bottom-panel {
-        width: 100%;
-        padding: 10px 15px;
-        flex-flow: row wrap;
-
-        .lang-switcher {
-          display: flex;
-          -webkit-box-pack: end;
-          justify-content: flex-end;
-        }
-      }
+    .copywriter {
+      color: @color-gray-dark;
+      text-align: right;
     }
 
-    &-content {
-      margin: 80px 15px 20px;
-      background-color: #f5f7f9;
-      padding: 15px 20px;
-      border-radius: 5px;
-    }
+
   }
 }
 </style>
+
+<i18n src="./LayoutDefaultLang.json"/>

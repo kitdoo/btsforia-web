@@ -1,0 +1,48 @@
+{
+  "ru": {
+    "layout": {
+      "menu": {
+        "main": {
+          "link": {
+            "text": "Главная"
+          }
+        },
+        "events": {
+          "link": {
+            "text": "Проекты"
+          }
+        },
+        "congratulations-events": {
+          "link": {
+            "text": "Поздравления"
+          }
+        },
+        "charity-events": {
+          "link": {
+            "text": "Благотворительность"
+          }
+        },
+        "reports": {
+          "link": {
+            "text": "Отчёты"
+          }
+        },
+        "documents": {
+          "link": {
+            "text": "Документы"
+          }
+        },
+        "contacts": {
+          "link": {
+            "text": "Контакты"
+          }
+        }
+      },
+      "footer": {
+        "owner": "\"BTSforia\"",
+        "label": "Language: ",
+        "copywriter": "Все права защищены."
+      }
+    }
+  }
+}
